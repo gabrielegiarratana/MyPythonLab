@@ -9,8 +9,9 @@ class Person:
 
 class PersonBuilder:
 
-    def __init__(self, person=Person()):
-        self.person = person
+    def __init__(self,
+                 person=None):  # Beware of http://www.omahapython.org/IdiomaticPython.html#default-parameter-values
+        self.person = person or Person()
 
     def set_name(self, name):
         self.person.name = name
@@ -25,6 +26,9 @@ class PersonBuilder:
 
 
 if __name__ == "__main__":
-    pb = PersonBuilder()
-    person = pb.set_name("gabriele").set_age(41).build()
-    print(person)
+    personBuilderA = PersonBuilder()
+    personaA = personBuilderA.set_name("person_a").set_age(40).build()
+    personBuilderB = PersonBuilder()
+    personB = personBuilderB.set_name("person_b").set_age(30).build()
+    print(personaA)
+    print(personB)
