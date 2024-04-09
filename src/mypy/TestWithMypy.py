@@ -1,9 +1,11 @@
 import itertools
 from typing import Iterator
 
-class Test:
-    def __init__(self, initial_balance=0):
+
+class TestWithMyPy:
+    def __init__(self, initial_balance: int = 0) -> None:
         self.balance = initial_balance
+
 
 def iter_primes() -> Iterator[int]:
     # An iterator of all numbers between 2 and
@@ -20,6 +22,7 @@ def iter_primes() -> Iterator[int]:
         # This code iteratively builds up a chain
         # of filters...
         numbers = filter(prime.__rmod__, numbers)
+
 
 for p in iter_primes():
     if p > 1000:

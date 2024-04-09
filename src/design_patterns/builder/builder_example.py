@@ -9,8 +9,9 @@ class Person:
 
 class PersonBuilder:
 
-    def __init__(self,
-                 person=None):  # Beware of http://www.omahapython.org/IdiomaticPython.html#default-parameter-values
+    def __init__(
+        self, person=None
+    ):  # Beware of http://www.omahapython.org/IdiomaticPython.html#default-parameter-values
         self.person = person or Person()
 
     def set_name(self, name):
