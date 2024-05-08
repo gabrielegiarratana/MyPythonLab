@@ -1,43 +1,30 @@
-import pyspark
-from pyspark.sql import SparkSession, Row
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-import pyspark.sql.functions as F
-from kensu.utils.kensu_provider import KensuProvider
+from pyspark.python.pyspark.shell import spark
+from pyspark.sql.functions import col
 
-import kensu.pyspark as py
+df = spark.createDataFrame([(1, 1.0), (2, 2.0)], ["int", "float"])
 
 
-# TODO
+def cast_all_to_int(input_df):
+    return input_df.select([col(col_name).cast("int") for col_name in input_df.columns])
 
-process_name = "Spark example with Kensu"
 
-def get_dataframe(data):
-    schema = StructType(
-        [
-            StructField("id", IntegerType(), True),
-            StructField("value", IntegerType(), True),
-        ]
-    )
-    return spark.createDataFrame(data=data, schema=schema)
+def sort_columns_asc(input_df):
+    return input_df.select(*sorted(input_df.columns))
+
+
+def add_n(input_df, n):
+    return input_df.select([(col(col_name) + n).alias(col_name)
+                            for col_name in input_df.columns])
 
 
 if __name__ == "__main__":
-    K = KensuProvider().initKensu(allow_reinit=True, process_name=process_name)
-    spark = SparkSession.builder.appName(process_name).getOrCreate()
-    py.init_kensu_spark(pyspark)
 
-    data = [(1, 100), (2, 200), (3, 300), (4, 400)]
+    print("Original dataframe")
+    df.show()
 
-    update_data = [(1, 101), (4, 401), (5, 500)]  # updated record  # updated record
-
-    df = get_dataframe(data)
-
-    update_df = get_dataframe(update_data)
-
-    upsert_df = (
-        df.alias("old")
-        .join(update_df.alias("new"), ["id"], "outer")
-        .select("id", F.coalesce("new.value", "old.value").alias("value"))
-    )
-
-    upsert_df.orderBy("id").show(truncate=False)
+    print("Dataframe after chaining transformations")
+    (df
+     .transform(cast_all_to_int)
+     .transform(sort_columns_asc)
+     .transform(add_n, 100)
+     .show())
