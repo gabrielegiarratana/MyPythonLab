@@ -2,3 +2,6 @@ numpy
 black
 pydantic
 pyspark
+kensu
+kensu-pyspark
+pandas
