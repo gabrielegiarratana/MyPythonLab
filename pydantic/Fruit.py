@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 class Fruit(BaseModel):
     name: str
-    color: Literal['red', 'green']
+    color: Literal["red", "green"]
     weight: Annotated[float, Gt(0)]
     bazam: Dict[str, List[Tuple[int, bool, float]]]
 
@@ -15,10 +15,10 @@ class Fruit(BaseModel):
 if __name__ == "__main__":
     print(
         Fruit(
-            name='Apple',
-            color='red',
+            name="Apple",
+            color="red",
             weight=4.2,
-            bazam={'foobar': [(1, True, 0.1)]},
+            bazam={"foobar": [(1, True, 0.1)]},
         )
     )
     # > name='Apple' color='red' weight=4.2 bazam={'foobar': [(1, True, 0.1)]}

@@ -1,7 +1,10 @@
 numpy
 black
 pydantic
-pyspark
+pyspark==3.2.4
 kensu
 kensu-pyspark
 pandas
+matplotlib
+networkx
+psycopg2

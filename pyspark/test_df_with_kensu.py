@@ -11,6 +11,7 @@ import kensu.pyspark as py
 
 process_name = "Spark example with Kensu"
 
+
 def get_dataframe(data):
     schema = StructType(
         [

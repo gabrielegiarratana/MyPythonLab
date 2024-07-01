@@ -1,11 +1,10 @@
 import unittest
 import numpy as np
 
-from src import app
+import app
 
 
 class TestApp(unittest.TestCase):
-
 
     def test_numeric_add_one(self):
         array = np.array([1, 2, 3])
@@ -17,5 +16,6 @@ class TestApp(unittest.TestCase):
         answer = np.array([np.nan, 3, 4])
         np.testing.assert_array_equal(app.add_one(array), answer)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
