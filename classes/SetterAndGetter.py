@@ -26,6 +26,7 @@ class PesoConDecoratore:
 
     @gr.setter
     def gr(self, gr):  # metodo protetto, da non usare all'esterno
+        # nb il metodo getter e setter hanno lo stesso nome in questo caso
         if gr >= 0:
             self._kg = gr / 1000
         else:
