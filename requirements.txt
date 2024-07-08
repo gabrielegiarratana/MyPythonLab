@@ -8,3 +8,4 @@ pandas
 matplotlib
 networkx
 psycopg2
+sqlalchemy
