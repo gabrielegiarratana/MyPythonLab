@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel, PositiveInt
+from pydantic_example import BaseModel, PositiveInt
 
 
 class User(BaseModel):

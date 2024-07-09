@@ -2,7 +2,7 @@ from typing import Annotated, Dict, List, Literal, Tuple
 
 from annotated_types import Gt
 
-from pydantic import BaseModel
+from pydantic_example import BaseModel
 
 
 class Fruit(BaseModel):

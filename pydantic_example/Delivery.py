@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Tuple
 
-from pydantic import BaseModel
+from pydantic_example import BaseModel
 
 
 class Delivery(BaseModel):
