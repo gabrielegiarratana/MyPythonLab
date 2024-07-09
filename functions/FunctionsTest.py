@@ -3,8 +3,9 @@ import random
 
 
 #
-# Credits: https://calmcode.io/course/decorators/behavior
-# We've seen how functions can accept functions in python as input. Let's use this knowledge to create a function that accepts a function as input but also returns a function as output.
+# Credits: https://calmcode.io/course/decorators/behavior We've seen how functions can accept functions in python as
+# input. Let's use this knowledge to create a function that accepts a function as input but also returns a function
+# as output.
 #
 def stopwatch(f):
     def func():

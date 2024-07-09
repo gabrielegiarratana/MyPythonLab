@@ -1,5 +1,5 @@
-from pyspark_example.python.pyspark.shell import spark
-from pyspark_example.sql.functions import col
+from pyspark.python.pyspark.shell import spark
+from pyspark.sql.functions import col
 
 df = spark.createDataFrame([(1, 1.0), (2, 2.0)], ["int", "float"])
 

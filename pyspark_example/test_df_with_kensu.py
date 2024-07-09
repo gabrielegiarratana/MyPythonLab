@@ -1,7 +1,7 @@
-import pyspark_example
-from pyspark_example.sql import SparkSession, Row
-from pyspark_example.sql.types import StructType, StructField, StringType, IntegerType
-import pyspark_example.sql.functions as F
+import pyspark
+from pyspark.sql import SparkSession, Row
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
+import pyspark.sql.functions as F
 from kensu.utils.kensu_provider import KensuProvider
 
 import kensu.pyspark as py
@@ -25,7 +25,7 @@ def get_dataframe(data):
 if __name__ == "__main__":
     K = KensuProvider().initKensu(allow_reinit=True, process_name=process_name)
     spark = SparkSession.builder.appName(process_name).getOrCreate()
-    py.init_kensu_spark(pyspark_example)
+    py.init_kensu_spark(pyspark)
 
     data = [(1, 100), (2, 200), (3, 300), (4, 400)]
 
