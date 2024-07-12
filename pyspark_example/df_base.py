@@ -1,17 +1,16 @@
-import pyspark_example
-from pyspark.sql import SparkSession, Row
-from pyspark.sql.types import StructType, StructField, StringType, IntegerType
+from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType
 
 
 if __name__ == "__main__":
     spark = SparkSession.builder.appName("Spark example").getOrCreate()
 
-    data = [(1, 100), (2, 200), (3, 300), (4, 400)]
+    data = [(1, "Gabriele"), (2, "John"), (3, "Mary"), (4, "Claire")]
 
     schema = StructType(
         [
             StructField("id", IntegerType(), True),
-            StructField("value", IntegerType(), True),
+            StructField("value", StringType(), True),
         ]
     )
     df = spark.createDataFrame(data=data, schema=schema)
