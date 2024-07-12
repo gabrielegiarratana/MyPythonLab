@@ -46,7 +46,7 @@ class TestDAG(unittest.TestCase):
         self.assertEqual(actual_graph.nodes, expected_graph.nodes)
         self.assertEqual(actual_graph.edges, expected_graph.edges)
 
-    def test_create_job_list(self):
+    def test_node_list(self):
         actual_job_list = self.test_dag.node_list()
         # Assert the expected result
         expected_job_list = [self.job5, self.job4, self.job6, self.job7]
